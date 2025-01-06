@@ -8,8 +8,8 @@ export async function load({ url, fetch }) {
 		if (limit > 100) {
 			throw error(400, 'Bad request');
 		}
-		const response = await fetch(`https://dummyjson.com/users?limit=${limit}&skip=${skip}`);
-		const data = await response.json();
+		const res = await fetch(`https://dummyjson.com/users?limit=${limit}&skip=${skip}&total=100`);
+		const data = await res.json();
 		return data;
 	}
 	return { users: await getUsers(limit, skip) };
