@@ -1,10 +1,38 @@
+<script lang="ts">
+	let { children } = $props();
+</script>
+
 <svelte:head>
 	<title>Shallow Routing</title>
 </svelte:head>
 
-<slot />
+<header>
+	<h1>Shallow Routing</h1>
+	<nav>
+		<a href="/">Home</a>
+		<a href="/users">Users</a>
+	</nav>
+</header>
+
+{@render children()}
 
 <style>
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	header nav {
+		display: flex;
+		gap: 20px;
+	}
+
+	header nav a {
+		text-decoration: none;
+		color: inherit;
+		font-size: 1.2rem;
+	}
+
 	:global(::-webkit-scrollbar) {
 		display: none;
 	}
@@ -24,10 +52,10 @@
 		border-radius: 8px;
 	}
 
-	:global(body) {
+	/* :global(body) {
 		height: 100%;
 		display: grid;
 		place-content: center;
 		place-items: center;
-	}
+	} */
 </style>
